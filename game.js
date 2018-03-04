@@ -5,17 +5,19 @@ var Game = function (can, ctx) {
 	this.can = can;
 	this.engine = new Engine(can, ctx);
 	this.assert = new Asset(this);
+	this.staticAssert = new StaticAssert(this);
 	this.init = function () {
 		this.engine.init(this);
 		this.assert.init(function () {
 			console.log("assert done!");
-		});
+			this.staticAssert.init();
+		}.bind(this));
 	}
 	this.update = function (delta) {
 		// body...
 	}
 	this.render = function () {
-		// body...
+		this.staticAssert.render(this.staticAssert.layer.background);
 	}
 	this.start = function () {
 		this.engine.start();
@@ -26,3 +28,4 @@ var Game = function (can, ctx) {
 }
 var game = new Game(can, ctx);
 game.init();
+game.start();
