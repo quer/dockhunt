@@ -18,6 +18,8 @@ var Game = function (can, ctx) {
 	}
 	this.render = function () {
 		this.staticAssert.render(this.staticAssert.layer.background);
+		this.staticAssert.render(this.staticAssert.layer.bush);
+		this.staticAssert.render(this.staticAssert.layer.forground);
 	}
 	this.start = function () {
 		this.engine.start();
